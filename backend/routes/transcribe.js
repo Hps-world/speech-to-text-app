@@ -63,18 +63,32 @@ router.get("/transcripts", async (req, res) => {
 router.delete("/transcripts/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("🧩 Delete request for ID:", id);
+
+    // ✅ Check if it's a valid Mongo ObjectId
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      console.warn("⚠️ Skipping delete — invalid ObjectId:", id);
+      return res.status(200).json({
+        success: true,
+        message: "Item was temporary (not saved in DB), nothing to delete.",
+      });
+    }
+
     const deleted = await Transcript.findByIdAndDelete(id);
 
     if (!deleted) {
+      console.warn("⚠️ Transcript not found:", id);
       return res.status(404).json({ error: "Transcript not found" });
     }
 
+    console.log("✅ Transcript deleted successfully:", id);
     res.json({ success: true, message: "Transcript deleted successfully" });
   } catch (error) {
     console.error("❌ Failed to delete transcript:", error);
     res.status(500).json({ error: "Failed to delete transcript" });
   }
 });
+
 // 📜 POST /api/transcripts/save → Save live transcript from frontend
 router.post("/transcripts/save", async (req, res) => {
   try {
