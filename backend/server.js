@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://speech-to-text-app-sigma.vercel.app/"
+    "https://speech-to-text-app-sigma.vercel.app/login"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
