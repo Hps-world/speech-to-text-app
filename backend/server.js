@@ -17,14 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 // Basic security + logging
 app.use(helmet());
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://speech-to-text-app-sigma.vercel.app/login"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
-// configure origin in production
+app.use(cors()); // configure origin in production
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("dev"));
 app.use(rateLimiter); // simple rate limiting middleware
