@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# build
+dist/
+uploads/
+
+# environment files
+.env
+**/.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# system
+.DS_Store
