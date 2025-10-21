@@ -22,7 +22,7 @@ export default function Dashboard() {
   // 🧠 Fetch all transcripts
   const fetchTranscripts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/transcripts", {
+      const res = await fetch("import.meta.env.VITE_BACKEND_URL/api/transcripts", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch transcripts");

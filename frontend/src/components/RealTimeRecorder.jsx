@@ -21,7 +21,7 @@ export default function RealTimeRecorder({ onFinalTranscript }) {
   // 🧩 Get ephemeral token from backend
   const getEphemeralToken = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/deepgram/token");
+      const res = await fetch("import.meta.env.VITE_BACKEND_URL/api/deepgram/token");
       const data = await res.json();
       if (!data.key) throw new Error("Invalid token response");
       return data.key;
@@ -139,7 +139,7 @@ export default function RealTimeRecorder({ onFinalTranscript }) {
     // ✅ Send final transcript to backend to save
     if (finalText.trim()) {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/transcripts/save", {
+      const res = await fetch("import.meta.env.VITE_BACKEND_URL/api/transcripts/save", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
