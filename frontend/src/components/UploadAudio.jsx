@@ -32,7 +32,7 @@ export default function UploadAudio({ onTranscription }) {
 
       const token = localStorage.getItem("token");
 
-      const res = await fetch("import.meta.env.VITE_BACKEND_URL/api/transcribe", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/transcribe`, {
         method: "POST",
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         body: formData,

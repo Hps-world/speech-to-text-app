@@ -27,7 +27,7 @@ export default function TranscriptionList({ transcripts, onDelete }) {
       setDeletingId(id);
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`import.meta.env.VITE_BACKEND_URL/api/transcripts/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/transcripts/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

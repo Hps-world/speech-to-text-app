@@ -55,7 +55,7 @@ export default function Recorder({ onTranscription }) {
 
       const token = localStorage.getItem("token");
 
-      const res = await fetch("import.meta.env.VITE_BACKEND_URL/api/transcribe", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/transcribe`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
